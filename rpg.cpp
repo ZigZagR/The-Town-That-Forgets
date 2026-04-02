@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <locale> // poder usar acento
+#include <limits> // numeric_limits::max()""
 #include <windows.h>
 
 using namespace std;
@@ -67,6 +68,7 @@ void intro() {
     cout << "O ponto de ônibus permanece silencioso.\n"; 
     cout << "Muito silencioso.\n";
     cout << "A placa da parada está vazia, exceto pelo símbolo de um ônibus.\n";
+    cout << "\n";
 
     ruas(); // base de tudo, vai retornar pra cá
 }
@@ -81,6 +83,7 @@ void ruas(){
     }
     int escolha;
 
+    cout << "\n";
     cout << "1 - Tentar se aproximar do homem\n";
     cout << "2 - Olhar seu reflexo na janela\n";
     cout << "3 - Sair da cidade\n";
@@ -107,27 +110,47 @@ void ruas(){
 
 void homem(){ // perdão pedro. me passei.
     if(interagiuHomem == 0){
+        cout << "\n";
         cout << "O homem lhe atravessa.\n";
         cout << "Seu corpo sente um calafrio inexplicável.\n";
         cout << "Seu coração começa a acelerar.\n";
         cout << "Talvez sua mente já não esteja mais no lugar.\n";
+        cout << "\n";
         interagiuHomem++;
-        ruas();
+        cout << "1. Tentar novamente.\n";
+        cout << "2. Voltar.\n";
+        int escolha;
+        cin >> escolha;
+        if(escolha == 1){
+            homem();
+        }else {
+            ruas();
+        }
     } else if(interagiuHomem == 1){
-        cout << "Ele reage. Mas não a você e diz: \n";
+        cout << "\n";
+        cout << "Ele reage. Mas, não a você, e diz: \n";
         cout << "Você não deveria estar ainda aqui\n";
+        cout << "\n";
         interagiuHomem++;
-        ruas();
-
+        cout << "1. Tentar novamente.\n";
+        cout << "2. Voltar.\n";
+        int escolha;
+        cin >> escolha;
+        if(escolha == 1){
+            homem();
+        }else {
+            ruas();
+        }
     } else if(interagiuHomem == 2){ // vez 3
         cout << "Ele olha diretamente a você \n";
-
-        cout << "Pergunte quem ele é \n"; // 
-        cout << "Toque-o \n";
-        cout << "Permaneça em silêncio \n";
+        cout << "\n";
+        cout << "1. Pergunte quem ele é \n"; // 
+        cout << "2. Toque-o \n";
+        cout << "3. Permaneça em silêncio \n";
         int escolha;
         cin >> escolha; 
         if(escolha == 1){
+            cout << "\n";
             cout << "Ele sorri e diz: \n";
             cout << "Eu sou você, mas você não é eu. \n";
             cout << "1. Perguntar quem é você. \n";
@@ -137,6 +160,7 @@ void homem(){ // perdão pedro. me passei.
             int escolha2;
             cin >> escolha2;
             if(escolha2 == 1){
+                cout << "\n";
                 cout << "O sorriso dele fecha e ele diz: \n";
                 cout << "V\u016B\u0119rg. \n";
                 cout << "Você lembra o seu nome.\n";
@@ -145,10 +169,11 @@ void homem(){ // perdão pedro. me passei.
                 cout << "Mas há um relógio de bolso em sua mão.\n";
                 cout << "Ele está funcionando.\n";
                 
-                lembraNome = True;
+                lembraNome = true;
                 ruas();
                 
             }else if(escolha2 == 2){
+                cout << "\n";
                 cout << "Ele sorri novamente, sua boca abrindo ainda mais e diz: \n";
                 cout << "Você está onde sempre esteve. \n";
                 cout << "O homem nunca esteve ali.\n";
@@ -156,6 +181,7 @@ void homem(){ // perdão pedro. me passei.
                 ruas();
                 
             }else if(escolha2 == 3){
+                cout << "\n";
                 cout << "Sua boca abre, as bordas do lábio racham, se abrindo com um som de carne rasgando e ele diz: \n";
                 cout << "Pela saída. Ou pela morte. \n";
                 cout << "A criatura que se diz ser você continua a abrir a boca, revelando uma escuridão sem fim. \n";
@@ -167,11 +193,12 @@ void homem(){ // perdão pedro. me passei.
                 cout << "Você está sozinho novamente, mas com um relógio de bolsos em mão e um senso de si.\n";
 
                 sanidade -= 10; // Fim SECRETO
-                lembraNome = True;
+                lembraNome = true;
                 ruas();
             }
 
         }else if(escolha == 2){
+            cout << "\n";
             cout << "A pele dele tem a mesma textura que plástico.\n";
             cout << "Você sente um arrepio percorrer seu corpo.\n";
             cout << "Como a energia estática de um balão no cabelo.\n";
@@ -191,8 +218,8 @@ void homem(){ // perdão pedro. me passei.
 
             }
         }else if(escolha == 3){
-            cout << "Ele sorri e diz: \n";
-            cout << "Eu sou você. \n";
+            cout << "\n";
+            cout << "Dev \n";
             interagiuHomem++;
             ruas();
         }
@@ -201,18 +228,28 @@ void homem(){ // perdão pedro. me passei.
 
 void reflexo(){
 
+    cout << "Dev \n";
+    viuReflexo++;
+    ruas();
 }
 
 void saidaDaCidade(){
 
+    cout << "Dev \n";
+    fugiuCidade++; 
+    ruas();
 }
 
 void espere(){
 
+    cout << "Em Dev \n";
+    esperou++;
+    ruas();
 }
 
 void beco(){
-
+    cout << "Em Dev \n";
+    ruas();
 }
 
 void fim_npc(){
