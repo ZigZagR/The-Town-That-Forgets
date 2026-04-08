@@ -40,6 +40,11 @@ void saidaDaCidade(); // Quase pronto falta add uma rota alternativa perfeita
 void espere(); // N comecei
 void beco(); // N comecei
 void espelho(); // N comecei
+void corredor_reflexos();
+void sala_versoes();
+void sem_reflexo();
+void espelho_quebrado();
+void saida_falsa();
 
 //fins
 void fim_perfeito();
@@ -47,6 +52,7 @@ void fim_saida();
 void fim_esquecido();
 void fim_npc();
 void creditos();
+void fim_espelho();
 
 // funções para ajudar 
 void printCreepy(); // printa com intervalos aleatórios
@@ -539,7 +545,77 @@ void beco(){
     ruas();
 }
 
-void espelho(){
+void corredor_reflexos(){
+   
+   
+    cout << "1. Imitar o reflexo \n"; // Perde controle de si por uns segundos, se repetir pode trocar de lugar com o reflexo
+    cout << "2. Ignorar e seguir \n"; // Segue em frente, seu reflexo fica para trás chegando em uma sala central
+    cout << "3. Tocar o espelho \n"; // O reflexo sai do espelho e começa a andar para alguma direção desconhecida parecendo incompleto ou sem senso de direção
+    cout << "4. Observar por mais tempo \n"; // rota secreta TRIGGER insanidade < 10
+    cout << "5. Sair por uma saída estranha.\n";
+
+
+    int escolha;
+    escolha = verificaInput(5);
+    if (escolha == 1)
+    {
+        cout << "Ao tentar imitar o reflexo, você lentamente percebe que você está se transformando nele.\n";
+        cout << "Já é tarde demais para parar. Seu corpo já está do outro lado do espelho. A criatura anda livre. \n";
+        cout << "Mas você agora está preso. Fadado a tentar imitar o quer que esteja do outro lado do espelho, para tomar seu lugar \n";
+        fim_espelho();
+    } else if (escolha == 2)
+    {
+        /* code */
+    }
+     else if (escolha == 3)
+    {
+        /* code */
+    }
+     else if (escolha == 4)
+    {
+        /* code */
+    }
+     else if (escolha == 5)
+    {
+        /* code */
+    }
+}
+
+void espelho(){ 
+
+    cout << "1. Imitar o reflexo \n"; // Perde controle de si por uns segundos, se repetir pode trocar de lugar com o reflexo
+    cout << "2. Ignorar e seguir \n"; // Segue em frente, seu reflexo fica para trás chegando em uma sala central
+    cout << "3. Tocar o espelho \n"; // O reflexo sai do espelho e começa a andar para alguma direção desconhecida parecendo incompleto ou sem senso de direção
+    cout << "4. Observar por mais tempo \n"; // rota secreta TRIGGER insanidade < 10
+    cout << "5. Sair por uma saída estranha.\n";
+
+
+    int escolha;
+    escolha = verificaInput(5);
+    if (escolha == 1)
+    {
+        cout << "Ao tentar imitar o reflexo, você lentamente percebe que você está se transformando nele.\n";
+        cout << "Já é tarde demais para parar. Seu corpo já está do outro lado do espelho. A criatura anda livre. \n";
+        cout << "Mas você agora está preso. Fadado a tentar imitar o quer que esteja do outro lado do espelho, para tomar seu lugar \n";
+        fim_espelho();
+    } else if (escolha == 2)
+    {
+        /* code */
+    }
+     else if (escolha == 3)
+    {
+        /* code */
+    }
+     else if (escolha == 4)
+    {
+        /* code */
+    }
+     else if (escolha == 5)
+    {
+        /* code */
+    }
+
+
     // Plano  Espelho)    
     // - Corredor de Reflexos 
     // 1. Imitar o reflexo - Perde controle de si por uns segundos, se repetir pode trocar de lugar com o reflexo
@@ -582,6 +658,11 @@ void fim_npc(){
     cout << "Vendo a expressão horrorizada daquilo que não estava ali não conseguindo sair ao tentar segui-lo.\n";
     cout << "Você continua a andar e chega em uma colina coberta de flores. Cessando sua existência e tornando-se uma delas.\n";
     cout << "Fim\n";
+    creditos();
+}
+
+void fim_espelho(){
+    cout << "Em dev."; //cria algo ai
     creditos();
 }
 
