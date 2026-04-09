@@ -3,7 +3,7 @@
 #include <locale> // poder usar acento
 #include <limits> // numeric_limits::max() 
 #include <windows.h>
-#include <cstdlib> // adicionado para exit(0)
+#include <cstdlib> // exit(0) )
 
 using namespace std;
 
@@ -16,8 +16,7 @@ bool temRelogioFalso = false;
 
 // condições mentais
 bool memoriaInstavel = false;
-int sanidade = 100;
-bool insanidade = false;
+int sanidade = 10;
 bool lembraNome = false;
 bool matouReflexo = false;
 bool caiuBuraco = false;
@@ -25,6 +24,8 @@ bool comido = false;
 bool homemExiste = true;
 bool reflexoAutonomo = false;
 bool seguindoHomem = false;
+bool ignorouCorredor = false;    
+bool reflexoSeguindo = false;
 
 // história
 int viuReflexo = 0;
@@ -33,29 +34,30 @@ int fugiuCidade = 0;
 int esperou = 0;
 
 void intro(); // Ok
-void ruas(); // Falta o espere
+void ruas(); // Ok
 void homem(); // Ok
 void reflexo(); // Acabar entrar no espelho
 void saidaDaCidade(); // Quase pronto falta add uma rota alternativa perfeita
-void espere(); // N comecei
-void beco(); // N comecei
+void espere(); // Ok
+void beco(); // Metade
 void espelho(); // N comecei
 void corredor_reflexos();
 void sala_versoes();
-void sem_reflexo();
+void espelho_sem_reflexo();
 void espelho_quebrado();
 void saida_falsa();
 
 //fins
 void fim_perfeito();
-void fim_saida();
-void fim_esquecido();
-void fim_npc();
-void creditos();
-void fim_espelho();
+void fim_saida(); 
+void fim_esquecido(); // Ok
+void fim_npc(); // Ok
+void creditos(); // Ok
+void fim_espelho(); // PEPE FAZER
+void fim_verdade(); // PEPE FAÇA
+void fim_inferno(); // PEPE CRIE O INFERNO 
 
 // funções para ajudar 
-void printCreepy(); // printa com intervalos aleatórios
 void printSuspense(); // printa até ponto final de string
 int verificaInput(int max); // valor default no min pq n usa 0 ou negativo
 
@@ -198,6 +200,7 @@ void homem(){ // perdão pedro. me passei.
         cout << "Ele reage. Mas, não a você, e diz: Você não deveria estar aqui ainda.\n";
         cout << "\n";
         interagiuHomem++;
+        sanidade -= 1;
 
         cout << "1. Tentar novamente.\n";
         cout << "2. Voltar.\n";
@@ -252,6 +255,7 @@ void homem(){ // perdão pedro. me passei.
                 cout << "Você está onde sempre esteve. \n";
                 cout << "O homem nunca esteve ali.\n";
                 cout << "Você está sozinho novamente. Há um relógio de bolso funcionando em suas mãos com uma inscrição apagada\n";
+                sanidade -= 1;
                 temRelogioFalso = false;
                 homemExiste = false;
 
@@ -269,7 +273,7 @@ void homem(){ // perdão pedro. me passei.
                 cout << "Ao retirar a âncora que prendia a existência da criatura, ela se desfaz em nada.\n";
                 cout << "Você está sozinho novamente, mas com um relógio de bolsos em mão e um senso de si.\n";
 
-                sanidade -= 10; // Fim SECRETO
+                sanidade -= 5; // Fim SECRETO
                 lembraNome = true;
                 homemExiste = false;
                 ruas();
@@ -333,6 +337,7 @@ void reflexo(){
                 matouReflexo = true;
                 cout << "Como a chama de uma vela, você percebe subitamente. Você não está lá. Nunca esteve. Em seu lugar... Nada sempre houve.\n";
                 cout << "O reflexo já não mais ali mostra apenas o que deveria estar ali. Você não está no reflexo.\n";
+                sanidade -= 1;
                 reflexo();
 
             }else if(escolha == 2){
@@ -344,6 +349,7 @@ void reflexo(){
             cout << "Você novamente está a só na frente do vidro da loja. Ele reflete o céu, as lojas e as ruas. Mas não você.\n";
             cout << "1. Tocar o vidro.\n";
             cout << "2. Voltar.\n";
+            sanidade -= 1;
 
             int escolha;
             escolha = verificaInput(2);
@@ -390,16 +396,36 @@ void reflexo(){
         reflexoAutonomo = true;
         viuReflexo++;
         memoriaInstavel = true;
+        sanidade -= 1;
         
         reflexo();
     }
 }
 
 void saidaDaCidade(){
+    
+    if(sanidade <= 0 && temRelogioVerdadeiro){
+        cout << "Você sabe a saída. É algo instintivo. Aqueles pequenos truques não podem mais lhe parar. Você olha para a placa e entende para onde deve ir.\n";
+        cout << "Você pega seu relógio de bolso e o abre. Os ponteiros estão quebrados como sempre. Parados no tempo, mas ainda sim certos duas vezes ao dia.\n";
+        cout << "O seu nome inscrito nas margens dele ressoa. Um vibrante dourado ao mesmo tempo que uma espécie de porta circular surge a sua frente.\n";
+        cout << "Há runas por toda a parte e um claro buraco no centro de seu formato circular.\n";
+        cout << "Você extende o seu relógio e ele é puxado como uma força quase que magnética.\n";
+        cout << "Ela se abre revelando uma luz de uma outra realidade.\n";
+        fim_perfeito();
+    }
+
+    if(temRelogioFalso){
+        cout << "Seu relógio de bolso parece ressoar com a cidade. Ao passar pela placa da cidade você parece conseguir entender algo e segue seu caminho\n";
+        cout << "Você pensa estar livre, a sensação que você está mudando de plano retornado ao normal vem de imediato.\n";
+        cout << "A última visão da cidade você percebe que o tempo nela havia parado. O seu relógio na verdade era falso.\n";
+        cout << "Você então percebe que era tudo um loop. Nada era real. O chão se racha embaixo de você abrindo caminho para o inferno.\n";
+        fim_inferno();        
+    }
 
     if(fugiuCidade == 0){
         cout << "A placa está ilegível. Você não consegue ler o nome da cidade, ou entender as direções. Você anda por algum tempo e para no mesmo lugar.\n";
         fugiuCidade++; 
+        sanidade -= 1;
         
         cout << "1. Tentar novamente.\n";
         cout << "2. Voltar.\n";
@@ -415,6 +441,7 @@ void saidaDaCidade(){
     }else if(fugiuCidade == 1){
         cout << "Você tenta ler a placa novamente. As letras derretem e caem no chão parecendo cera quente.\n";
         fugiuCidade++; 
+        sanidade -= 1;
 
         cout << "1. Tentar novamente.\n";
         cout << "2. Voltar.\n";
@@ -466,6 +493,7 @@ void espere(){
     }else if(esperou == 1){
         cout << "Você continua a esperar. O homem continua a andar desaparecendo no horizonte e reaparecendo eventualmente.\n";
         cout << "O reflexo nas lojas continua o mesmo. O beco permanece parece mais atrativo com o passar do tempo.\n";
+        sanidade -= 1;
         memoriaInstavel = true;
         esperou++;
 
@@ -504,6 +532,7 @@ void beco(){
         cout << "Você continua andando atrás dele, o homem então atravessa poucos passos após a luz e desaparece.\n";
         cout << "Você está sozinho no beco.\n";
         
+        sanidade -= 1;
         cout << "1. Ir até a luz.\n";
         cout << "2. Voltar.\n";
         int escolha;
@@ -545,6 +574,63 @@ void beco(){
     ruas();
 }
 
+
+void espelho(){ 
+    if(matouReflexo == true && sanidade <= 5){ // revela o corredor com espelho rachado e o corredor sem reflexo
+        cout << "Você está em uma sala opaca com 5 caminhos em cada ponta de um pentagrama. Alguns deles possuem portas de pedra o fechando.\n";
+        cout << "1. Seguir pelo corredor com uma placa com 3 macacos.\n"; 
+        cout << "2. Seguir pelo corredor com espelhos sem nenhum reflexo.\n"; 
+        cout << "3. Seguir pelo corredor com uma placa de espelho rachado.\n"; 
+        int escolha;
+        escolha = verificaInput(3);
+        if (escolha == 1)
+        {
+            sala_versoes();
+        } else if (escolha == 2)
+        {
+            espelho_sem_reflexo();
+        }
+        else if (escolha == 3)
+        {
+            espelho_quebrado();
+        }
+
+    }else if(matouReflexo == false){
+        cout << "Você está em uma sala opaca com 5 caminhos em cada ponta de um pentagrama. Alguns deles possuem portas de pedra o fechando.\n";
+        cout << "1. Seguir pelo corredor com reflexos visíveis de longe.\n"; 
+        cout << "2. Seguir pelo corredor com uma placa com 3 macacos.\n"; 
+        cout << "3. Seguir pelo corredor com uma placa que parece ser saída, mas levemente derretida.\n";
+
+        int escolha;
+        escolha = verificaInput(4);
+        if (escolha == 1)
+        {
+            corredor_reflexos();
+        } else if (escolha == 2)
+        {
+            sala_versoes();
+        }
+        else if (escolha == 3)
+        {
+            saida_falsa();
+        }
+    }else if(matouReflexo == true){
+        cout << "Você está em uma sala opaca com 5 caminhos em cada ponta de um pentagrama. Alguns deles possuem portas de pedra o fechando.\n";
+        cout << "1. Seguir pelo corredor com uma placa com 3 macacos.\n"; 
+        cout << "2. Seguir pelo corredor com espelhos sem nenhum reflexo.\n"; 
+        int escolha;
+        escolha = verificaInput(2);
+        if (escolha == 1)
+        {
+            sala_versoes();
+        } else if (escolha == 2)
+        {
+            espelho_sem_reflexo();
+        }
+    }
+
+}
+
 void corredor_reflexos(){
    
    
@@ -563,88 +649,118 @@ void corredor_reflexos(){
         cout << "Já é tarde demais para parar. Seu corpo já está do outro lado do espelho. A criatura anda livre. \n";
         cout << "Mas você agora está preso. Fadado a tentar imitar o quer que esteja do outro lado do espelho, para tomar seu lugar \n";
         fim_espelho();
+        
     } else if (escolha == 2)
     {
-        /* code */
-    }
-     else if (escolha == 3)
+        cout << "Você ignora os espelhos. Seguindo em frente por aquele corredor.\n";
+        ignorouCorredor = true;
+        fim_perfeito();
+        
+    } else if (escolha == 3)
     {
-        /* code */
+        cout << "A criatura sai do espelho e começa andar. Ela parece incompleta. Sem noção de como se mover propriamente ou ter uma direção.\n";
+        cout << "Ela anda até um pouco adiante e então para. Ela olha para você.\n";
+        cout << "A forma da criatura se distorce. Não conseguindo mais manter a imitação fora do espelho.\n";
+        cout << "Ela então se dissolve em nada. Você se pega novamente na sala pentagonal\n";
+        matouReflexo = true;
+        espelho();
     }
      else if (escolha == 4)
     {
-        /* code */
+        if(sanidade <= 5){
+            cout << "Você começa a lentamente ver a realidade daquele local. Você vê que os espelhos escondem um abismo inamignável por trás.\n";
+            cout << "Os espelhos escondem fragmentos de uma realidade terrível. Mas você sabe que aquilo é verdade.\n";
+            fim_verdade();
+        }else{
+            cout << "Você sente uma sensação estranha. Olhar para aquele espelho não parece surgir um efeito positivo.";
+            sanidade -= 1;
+            corredor_reflexos();
+        }
     }
      else if (escolha == 5)
     {
-        /* code */
+        saida_falsa(); 
     }
 }
 
-void espelho(){ 
-
-    cout << "1. Imitar o reflexo \n"; // Perde controle de si por uns segundos, se repetir pode trocar de lugar com o reflexo
-    cout << "2. Ignorar e seguir \n"; // Segue em frente, seu reflexo fica para trás chegando em uma sala central
-    cout << "3. Tocar o espelho \n"; // O reflexo sai do espelho e começa a andar para alguma direção desconhecida parecendo incompleto ou sem senso de direção
-    cout << "4. Observar por mais tempo \n"; // rota secreta TRIGGER insanidade < 10
-    cout << "5. Sair por uma saída estranha.\n";
-
-
+void sala_versoes(){
+    cout << "Você adentra a sala com a placa de 3 macacos.\n";
+    cout << "Há um reflexo com as mãos nos olhos.\n";
+    cout << "Há um segundo reflexo com as mãos nos ouvidos.\n";
+    cout << "Há um terceiro reflexo com as mãos na boca.\n";
+    cout << "\n";
+    cout << "1. Gesticular para o cego. \n"; 
+    cout << "2. Falar com o surdo.\n";
+    cout << "3. Perguntar a saída para o mudo.\n"; 
+    cout << "4. Ignorar todos e seguir em frente.\n";
     int escolha;
-    escolha = verificaInput(5);
-    if (escolha == 1)
-    {
-        cout << "Ao tentar imitar o reflexo, você lentamente percebe que você está se transformando nele.\n";
-        cout << "Já é tarde demais para parar. Seu corpo já está do outro lado do espelho. A criatura anda livre. \n";
-        cout << "Mas você agora está preso. Fadado a tentar imitar o quer que esteja do outro lado do espelho, para tomar seu lugar \n";
-        fim_espelho();
-    } else if (escolha == 2)
-    {
-        /* code */
+    escolha = verificaInput(4);
+    if(escolha == 1){
+        cout << "Você gesticula para o macaco cego. Ele não vê. Você vai pro inferno.\n";
+        fim_inferno();
+    }else if(escolha == 2){
+        cout << "Você fala com o macaco surdo. Ele não entende.\n";
+        fim_inferno();
+    }else if(escolha == 3){
+        cout << "Você toca o macaco mudo. Ele olha para você e então aponta para um dos caminhos.\n";
+        fim_inferno();
+    }else if(escolha == 4){
+        cout << "Você ignora todos os macacos e segue em frente. Nada nunca acontece chud.\n";
+        cout << "Você não vê o mal. Você não fala o mal. Você não ouve o mal.\n";
+        cout << "Eventualmente uma sala se revela a sua frente\n";
+        fim_perfeito();
     }
-     else if (escolha == 3)
-    {
-        /* code */
+}
+
+void saida_falsa(){
+    cout << "Você anda através da porta da saída tranquilamente. O caminho se revela curto e sem dificuldades.\n";
+    cout << "Você saí por uma porta de saída de emergência vermelha.\n";
+    if(reflexoAutonomo){
+        cout << "Ao sair pela porta você sente um leve distúrbio momentâneo em algum reflexo das lojas. Mas ele desaparece\n";
+        cout << "Você segue caminho andando em direção a saída da cidade.\n";
+        reflexoSeguindo = true;
+        fim_saida();
+    }else{
+        cout << "Você começa a andar em direção a saída da cidade\n";
+        fim_saida();
     }
-     else if (escolha == 4)
-    {
-        /* code */
-    }
-     else if (escolha == 5)
-    {
-        /* code */
-    }
+}
 
-
-    // Plano  Espelho)    
-    // - Corredor de Reflexos 
-    // 1. Imitar o reflexo - Perde controle de si por uns segundos, se repetir pode trocar de lugar com o reflexo
-    // 2. Ignorar e seguir - Segue em frente, seu reflexo fica para trás chegando em uma sala central
-    // 3. Tocar o espelho - O reflexo sai do espelho e começa a andar para alguma direção desconhecida parecendo incompleto ou sem senso de direção
-    // 4. Observar por mais tempo - O reflexo começa a agir sozinho com o tempo que passa. Eventualmente ele some. // rota secreta TRIGGER insanidade < 10
-
-    // - Sala das Versões - Versão cega, surda e muda
-    // 1. Gesticular para o cego. - Ilusão de escolha vai os 3 pro mesmo canto, inferno. 
-    // 2. Falar com o surdo.
-    // 3. Tocar o mudo.
-    // 4. Ignorar todos e seguir em frente. - Não interagir com o mal te faz seguir em frente recuperando o estado mental talvez?.
-
-    // - Espaço Sem Reflexo
+void espelho_sem_reflexo(){
+    // - Espaço Sem Reflexo -> SUGEStão PODE FAZER O QUE QUISER AQUI em geral seguir em frente vai pro fim verdade
     // 1. Esperar.
     // 2. Seguir em frente.
     // 3. Gritar.
-    // 4. Voltar.
+    cout << "Em dev\n"; // PEPEPPEPEPEPPEPEPE
+    creditos();
+}
 
+void espelho_quebrado(){
+    cout << "Você adentra uma sala onde todos espelhos estão quebrados. Cacos estilhaçados no chão. Somente resta um espelho inteiro no centro da sala.\n";
+    cout << "\n";
+    cout << "1. Olhar para o espelho.\n";
+    cout << "2. Olhar para os cacos no chão.\n";
+    cout << "3. Voltar.\n";
+    
+    int escolha;
+    escolha = verificaInput(3);
+
+    if(escolha  == 1){
+        cout << "Você olha para o espelho inteiro. Seu corpo e alma são sugados para fora daquele plano dimensional terrível que você estava preso.\n";
+        cout << "O mundo real lhe atinge como um tsunami. Fragmentos de memória retornam a pouco a pouco.\n";
+        fim_perfeito();
+    }else if(escolha  == 2){
+        cout << "Você olha para os cacos no chão. Você vê a cidade da forma que ela realmente é. Um pequeno mundo no estômago de Azazoth \n";
+        cout << "Você vê a verdade. E você não gosta dela.\n";
+        fim_verdade();
+    }else if(escolha  == 3){
+        cout << "Você volta. E encontra o caminho para a saída.\n";
+        fim_saida();
+    }
     // - Espelho Quebrado (rota secreta good ending) - Fragmentos de realidades diferentes
     // 1. Fragmento de realidade A - Você vê a vida real. Rota de desvaneio romântico editada.
     // 2. Fragmento de realidade B - Você vê a cidade da forma que ela realmente é. Um pequeno mundo no estômago de Azazoth 
     // 3. Voltar.
-
-    // - Saída (não confiável)
-    // Você saí mas algo pode vir junto ou não e tomar o seu lugar 50/50
-
-    cout << "Em dev.\n"; // ACABAR
-    ruas();
 }
 
 void fim_npc(){
@@ -661,8 +777,17 @@ void fim_npc(){
     creditos();
 }
 
+void fim_verdade(){
+    cout << "Em dev."; 
+    // Final de descobrir a verdade do mundo o mundo na verdade ser um pesadelo de azazoth paralelo ao mundo real. Este pesadelo é mantido por entidades cósmicas que prendem a 
+    // consciência de azazoth em um pentagrama de tamanho galático. Pode fazer sla alguma forma de vc acordar a criatura e o mundo acaba 
+    // pq Azazoth é uma entidade que literalmente sonha com a nossa realidade no universo de lovecraft
+    creditos();
+}
+
 void fim_espelho(){
     cout << "Em dev."; //cria algo ai
+    // Você entra no espelho e fica vendo a criatura sair dele e andar livremente pela sala totalmente independente tomando o seu lugar no mundo até você não existir mais
     creditos();
 }
 
@@ -689,7 +814,17 @@ void fim_esquecido(){
 }
 
 void fim_perfeito(){
-    cout << "Em dev.\n"; // ACABAR
+    cout << "Você abre os olhos. O teto de seu quarto é talvez uma das coisas mais bonitas que você já viu. \n";
+    cout << "O silêncio não é mais críptico e ensurdecedor. É pacífico.\n";
+    cout << "Ao seu lado há um calor suave. Segurando em sua camisa com força mesmo em seu sono.\n";
+    cout << "Você se vira. E de frente para ela, você agora lembra de tudo.\n";
+    cout << "Seus cabelos pretos como a noite recaem sobre o lençou como tinta de polvo.\n"; 
+    cout << "A luz da manhã passa pelas frestas da cortina, e seu cabelo reluz com o crepúsculo.\n";
+    cout << "A sua face tão delicada, tão serena. Lhe faz brevemente esquecer os horrores que você passou.\n";
+    cout << "Ela se mexe levemente bocejando e então se ajeitando novamente olhando para você por um breve segundo antes de retornar a dormir.\n";
+    cout << "Você não tem a mínima vontade de levantar também. Retornando ao conforto do sono.\n";
+    cout << "Você sente que finalmente está onde deveria estar.\n";
+    cout << "Fim\n";
     creditos();
 }
 
@@ -702,7 +837,15 @@ void fim_saida(){
     cout << "Dessa vez elas não desaparecem. A barreira que impedia o olhar daquilo se rompeu. \n";
     cout << "De forma explosiva as rachaduras se montam e remontam, pulsando. Os olhares através do véu já não afetam mais sua mente. \n";
     cout << "Sua mente já longe demais para ser humana. \n";
-    cout << "Uma pequena fechadura se abre à sua frente. Você saiu da cidade. Mas você nunca esteve nela. \n";
+    cout << "Uma pequena fechadura se abre à sua frente. Você saiu da cidade. Mas você nunca esteve nela para começar. \n";
+    if(reflexoSeguindo){
+        cout << "Você retorna a realidade, mas em algum lugar do mundo agora há algo que não deveria estar ali.\n";
+    }
+    cout << "Fim.\n";
+    creditos();
+}
+
+void fim_inferno(){
     cout << "Fim.\n";
     creditos();
 }
