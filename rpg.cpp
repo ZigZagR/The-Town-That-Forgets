@@ -478,15 +478,18 @@ void espere(){
     if(esperou == 0){
         cout << "Você espera por um tempo. Nada muda. O tempo passa. E passa. E passa. Você percebe um beco com uma iluminação precária\n"; 
         esperou++;
-        
-        cout << "1. Tentar novamente.\n";
-        cout << "2. Voltar.\n";
+
+        cout << "1. Continuar a esperar.\n";
+        cout << "2. Entrar no beco.\n";
+        cout << "3. Voltar.\n";
         int escolha;
-        escolha = verificaInput(2);
+        escolha = verificaInput(3);
 
         if(escolha == 1){
             espere();
         }else if(escolha == 2){
+            beco();
+        }else if(escolha == 3){
             ruas();
         }
 
@@ -497,14 +500,17 @@ void espere(){
         memoriaInstavel = true;
         esperou++;
 
-        cout << "1. Tentar novamente.\n";
-        cout << "2. Voltar.\n";
+        cout << "1. Continuar a esperar.\n";
+        cout << "2. Entrar no beco.\n";
+        cout << "3. Voltar.\n";
         int escolha;
-        escolha = verificaInput(2);
+        escolha = verificaInput(3);
 
         if(escolha == 1){
             espere();
         }else if(escolha == 2){
+            beco();
+        }else if(escolha == 3){
             ruas();
         }
 
@@ -539,6 +545,7 @@ void beco(){
         escolha = verificaInput(2);
 
         if(escolha == 1){
+            comido = true;
             fim_esquecido();
         }else if(escolha == 2){
             ruas();
@@ -570,8 +577,32 @@ void beco(){
             ruas();
         }
     }    
-    cout << "Em dev.\n"; // ACABAR
-    ruas();
+    cout << "Você adentra o beco sem hesitar. Andando e andando e andando.\n";
+    cout << "Eventualmente você percebe a silueta de uma forma a distância.\n";
+    cout << "Ao chegar perto dele você vê um mendigo. Um homem de cabelo ruivo já embranquecendo.\n";
+    cout << "Sua barba é longa. Seus olhos, profundos. Sua presença, harmônica.\n";
+    cout << "Ao seu redor há diversos instrumentos jogados ao redor do cobertor que ele se ernola.\n";
+    cout << "Ele olha para você com uma expressão mística. Pega um giz e desenha um símbolo no chão.\n";
+    cout << "O símbolo é um circulo místico que afeta a sua mente a única parte que você consegue ler é:\n";
+    cout << "Saudações Orateanas.\n";
+    cout << "Ele então se levanta e fala: Saudações Orateanas a aqueles que se atrevem.\n";
+    cout << "Entre neste circulo e descubra a verdade mística desse mundo.\n";
+    cout << "Ou tome este cachimbo e retorne a doce realidade\n";
+
+    cout << "1. Pisar no circulo.\n";
+    cout << "2. Fume o cachimbo.\n";
+    cout << "3. Ignore o mendigo e retorne.\n";
+
+    int escolha;
+    escolha = verificaInput(3);
+
+    if(escolha == 1){
+        fim_verdade();
+    }else if(escolha == 2){
+        fim_perfeito();
+    }else if(escolha == 3){
+        ruas();
+    }
 }
 
 
@@ -797,8 +828,7 @@ void fim_esquecido(){
         cout << "Distraído você cai em um buraco. Há apenas escuridão por um bom tempo. Não há corrente de ar. Não há nada além de uma força de sucção para baixo.\n";
         cout << "Você não consegue se lembrar de nada. Nem do seu nome. Nem do seu rosto. Nem do que você estava fazendo.\n";
         cout << "Você apenas cai. E cai. E cai. Você aterrisa em algo sólido. Não houve nenhum dano a você com a queda.\n";
-    }
-    if(comido){
+    }else if(comido){
         cout << "Você anda em direção a luz. Mas quando percebe o cheiro de peixe e sangue já é tarde demais.\n";
         cout << "Você é devorado por uma criatura similar a um peixe lanterna. Usando da luz para atrair suas presas.\n";
         cout << "Há apenas escuridão por um bom tempo. Não há corrente de ar. Não há nada além de uma força de sucção para baixo.\n";
