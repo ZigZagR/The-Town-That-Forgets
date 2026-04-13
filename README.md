@@ -2,7 +2,9 @@
 ## Uma aventura narrativa de texto em um universo lovecraftiano
 
 ### Compilação:
-### Tenha certeza de ter g++ instalado
+## Requisitos: g++ e windows.
+
+## Para verificar instalação do g++:
 ```bash 
 g++ --version
 ```
@@ -10,3 +12,5 @@ g++ --version
 ```bash
 g++ rpg.cpp -o rpg.exe
 ```
+### Fluxograma
+<img src="fluxograma.png" alt="Fluxograma" width="600"/>
