@@ -33,29 +33,29 @@ int interagiuHomem = 0;
 int fugiuCidade = 0;
 int esperou = 0;
 
-void intro(); // Ok
-void ruas(); // Ok
-void homem(); // Ok
-void reflexo(); // Acabar entrar no espelho
-void saidaDaCidade(); // Quase pronto falta add uma rota alternativa perfeita
-void espere(); // Ok
-void beco(); // Metade
-void espelho(); // N comecei
-void corredor_reflexos();
-void sala_versoes();
-void espelho_sem_reflexo();
-void espelho_quebrado();
-void saida_falsa();
+void intro(); // Finalizado
+void ruas(); // Não tem que mexer
+void homem(); // Finalizado
+void reflexo(); // Tem que ver
+void saidaDaCidade(); 
+void espere(); 
+void beco(); 
+void espelho(); 
+void corredor_reflexos(); 
+void sala_versoes(); 
+void espelho_sem_reflexo(); 
+void espelho_quebrado(); 
+void saida_falsa(); 
 
-//fins
+// fins
 void fim_perfeito();
 void fim_saida(); 
-void fim_esquecido(); // Ok
-void fim_npc(); // Ok
-void creditos(); // Ok
-void fim_espelho(); // PEPE FAZER
-void fim_verdade(); // PEPE FAÇA
-void fim_inferno(); // PEPE CRIE O INFERNO 
+void fim_esquecido(); 
+void fim_npc(); 
+void creditos(); 
+void fim_espelho(); 
+void fim_verdade(); 
+void fim_inferno(); 
 
 // funções para ajudar 
 void printSuspense(); // printa até ponto final de string
@@ -98,8 +98,273 @@ void printSuspense(string texto){
     cout << "\n";
 }
 
+void ascii_inferno(){
+    std::cout << R"(
+             / \          / \       / \
+        ____/   \________/   \_____/   \____
+       /                                    \
+      /      ^          ^           ^        \
+     /      / \        / \         / \        \
+    <______/   \______/   \_______/   \_______>
+           
+
+
+
+
+
+
+
+
+
+    )" << std::endl;
+}
+
+void ascii_ilha(){
+    std::cout << R"(
+    
+    
+    
+    
+                  _________
+               .-'         '-.
+              /               \
+    ~~~~~~~~~|_________________|~~~~~~~~~
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    
+    
+    
+    )" << std::endl;
+}
+
+void ascii_beco(){
+    std::cout << R"(
+    _________________________________________
+    |          |                 |          |
+    |          |                 |          |
+    |   ____   |        _        |   ____   |
+    |  |    |  |       / \       |  |    |  |
+    |  |____|  |      |   |      |  |____|  |
+    |          |      |___|      |          |
+    |__________|      _|_|_      |__________|
+    |          |     |  *  |     |          |
+    |          |     | (*) |     |          |
+    |          |     |_____|     |          |
+    |   ____   |        |        |   ____   |
+    |  |    |  |        |        |  |    |  |
+    |  |____|  |        |        |  |____|  |
+    |__________|________|________|__________|
+    |         /         |         \         |
+    |        /          |          \        |
+    |       /           |           \       |
+    |      /            |            \      |
+    |     /             |             \     |
+    |    /              |              \    |
+    |___/_______________|_______________\___|
+    
+    _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+    
+    _|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_
+    _|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_
+    )" << std::endl;
+}
+
+void ascii_buraco(){
+    std::cout << R"(
+              /          \
+             /    | |     \
+            /     | |      \
+           /      |_|       \
+          /                  \
+         /        ____        \
+        /      _ /    \_       \
+       /      /          \      \
+      /      |            |      \
+     /        \_        _/        \
+    /           \ ____ /           \
+   /                                \
+  /__________________________________\
+  
+  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+  
+  ____________________________________
+    )" << std::endl;
+}
+
+void ascii_colina(){
+    std::cout << R"(
+    
+    
+                  _  _
+                _| || |_
+               |_      _|
+                 |_||_|
+          _  _     ||      _  _
+        _| || |_   ||    _| || |_
+       |_      _|  ||   |_      _|
+         |_||_|    ||     |_||_|
+           ||    __||__     ||
+    _______||___/      \____||______
+   /                                \
+  /                                  \
+ /                                    \
+|                                      |
+    )" << std::endl;
+}
+
+void ascii_rua(){
+    std::cout << R"(
+       ._________________.
+      /|                 |\
+     / |      ____       | \
+    /  |     /    \      |  \
+   /___|____|______|_____|___\
+  |::::|    |      |     |::::|
+  |::::|____|______|_____|::::|
+  |::::|    |      |     |::::|
+  |::::|    |      |     |::::|
+  |::::|____|______|_____|::::|
+  |____|_________________|____|
+ /_____/_________________\_____\
+|     / / / / / / / / / /     |
+|    /_/_/_/_/_/_/_/_/_/      |
+ \__________________________/
+     _|_|_|_|_|_|_|_|_|_|_
+    _|_|_|_|_|_|_|_|_|_|_|_
+   _|_|_|_|_|_|_|_|_|_|_|_|_
+  _|_|_|_|_|_|_|_|_|_|_|_|_|_
+    )" << std::endl;
+}
+
+void ascii_espelho(){
+    std::cout << R"(
+    
+              .-----------------.
+             /___________________\
+            |   _______________   |
+            |  |               |  |
+            |  |               |  |
+            |  |               |  |
+            |  |               |  |
+            |  |               |  |
+            |  |               |  |
+            |  |               |  |
+            |  |               |  |
+            |  |               |  |
+            |  |               |  |
+            |  |               |  |
+            |  |               |  |
+            |  |               |  |
+            |  |_______________|  |
+            |                     |
+             \___________________/
+              |_________________|
+                   |       |
+                ___|_______|___
+               |_______________|
+    
+    )" << std::endl;
+}
+
+void ascii_rua_homem(){
+    std::cout << R"(
+       ._________________.
+      /|                 |\
+     / |      ____       | \
+    /  |     /    \      |  \
+   /___|____|______|_____|___\
+  |::::|    |      |     |::::|
+  |::::|____|______|_____|::::|
+  |::::|    |      |     |::::|
+  |::::|    |      |     |::::|
+  |::::|____|______|_____|::::|
+  |____|_________________|____|
+ /_____/_________________\_____\
+|     / / / / / / / / / /     |
+|    /_/_/_/_/_/_/_/_/_/      |
+ \_________     _____________/
+           |   |
+     ______|___|______
+    _|_|           |_|_
+   _|_|     O     |_|_|
+  _|_|     /|\    |_|_|_
+ _|_|_     / \    |_|_|_|
+_|_|_|_|_|_|_|_|_|_|_|_|_|
+    )" << std::endl;
+}
+
+void ascii_onibus(){
+    std::cout << R"(
+            .-------.
+            |  BUS  |
+            |   o   |
+            '-------'
+                |
+                |
+                |
+                |
+  ______________|______________
+                |
+       _ _ _ _ _ _ _ _ _ _ 
+  _____________________________
+  
+  / / / / / / / / / / / / / / /
+    )" << std::endl;
+}
+
+void ascii_saida(){
+    std::cout << R"(
+    
+               _________      _______
+              /    |    \    |       |
+             /     |     \   |       |
+            /      |      \  |_______|
+           /       |       \     |
+          /        |        \    |
+         /         |         \   |
+        /          |          \  |
+       /           |           \ |
+      /            |            \|
+     /             |             \
+    /______________|______________\
+    
+    _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+    
+    ===============================
+    )" << std::endl;
+}
+
+void ascii_cama(){
+    std::cout << R"(
+
+           .-----------------------------------.
+          /                                     \
+         |       .-----------.   .-----------.   |
+         |      /             \ /             \  |
+         |     |               |               | |
+         |      \             / \             /  |
+         |       '-----------'   '-----------'   |
+         |_______________________________________|
+         |                                       |
+         |                                       |
+         |                                       |
+         |                                       |
+         |                                       |
+         |                                       |
+         |                                       |
+         |                                       |
+         |                                       |
+         |_______________________________________|
+         |_______________________________________|
+            |       |                 |       |
+            |_______|                 |_______|
+
+    )" << std::endl;
+}
+
 void intro() { 
     system("cls"); // Limpa a tela do terminal
+    ascii_onibus();
     cout << "O ônibus partiu sem você perceber. Ou talvez nem tenha parado para começar.\n";
     cout << "O ponto de ônibus permanece silencioso. Muito silencioso\n"; 
     cout << "A placa da parada está vazia, exceto pelo símbolo de um ônibus.\n";
@@ -121,6 +386,7 @@ void ruas(){
     int escolha;
 
     if(homemExiste){
+        ascii_rua_homem();
         cout << "\n";
         cout << "1 - Tentar se aproximar do homem\n";
         cout << "2 - Olhar seu reflexo na janela\n";
@@ -146,6 +412,7 @@ void ruas(){
         }
 
     }else if(!homemExiste){
+        ascii_rua();
         cout << "\n";
         cout << "1 - Olhar seu reflexo na janela\n";
         cout << "2 - Sair da cidade\n";
@@ -403,6 +670,7 @@ void reflexo(){
 }
 
 void saidaDaCidade(){
+    ascii_saida();
     
     if(sanidade <= 0 && temRelogioVerdadeiro){
         cout << "Você sabe a saída. É algo instintivo. Aqueles pequenos truques não podem mais lhe parar. Você olha para a placa e entende para onde deve ir.\n";
@@ -522,6 +790,7 @@ void espere(){
 
 void beco(){  
     if(seguindoHomem){
+        ascii_beco();
         cout << "Você segue o homem para dentro do beco. Apenas a luz de uma lâmpada pendurada em um fio de metal ilumina o caminho.\n";
         cout << "Você não consegue ver nada a sua frente exceto a vaga imagem das costas do homem a sua frente.\n";
         cout << "Você não consegue ver o fim do beco. A escuridão é densa.\n";
@@ -562,6 +831,7 @@ void beco(){
         cout << "Você não consegue ver o que está abaixo de você. A escuridão é densa.\n";
         cout << "Você não consegue ver nada. A escuridão é densa.\n";
         cout << "Você não consegue ver nada. A escuridão é densa.\n";
+        ascii_beco();
         cout << "De repente. Uma luz se ascende na escuridão.\n";
         cout << "Há uma luz pendurada, balançando levemente no que parece ser o fim do beco.\n";
         
@@ -633,7 +903,7 @@ void espelho(){
         cout << "3. Seguir pelo corredor com uma placa que parece ser saída, mas levemente derretida.\n";
 
         int escolha;
-        escolha = verificaInput(4);
+        escolha = verificaInput(3);
         if (escolha == 1)
         {
             corredor_reflexos();
@@ -764,16 +1034,18 @@ void espelho_sem_reflexo(){
     cout << "1. Esperar. \n";
     cout << "2. Seguir em frente. \n";
     cout << "3. Gritar.";
-    // - Espaço Sem Reflexo -> SUGEStão PODE FAZER O QUE QUISER AQUI em geral seguir em frente vai pro fim verdade
+
     int escolha;
     escolha = verificaInput(3);
-    if(escolha == 2){
-        cout << "Seus passos parecem estranhos. Não pare.";
+    if(escolha == 1){
+        cout << "Você espera. O silêncio se torna tão denso que você começa a ouvir o som do seu próprio sangue correndo. O espelho continua vazio, refletindo apenas a ausência de tudo.\n";
+        cout << "No silêncio um novo som aparece. Ele é ensurdecedor. A rachadura vem. Rompendo o espelho abaixo dos seus pés. O abismo lhe engole.\n";
+        fim_inferno();
+    }else if(escolha == 2){
+        cout << "Você segue em frente. O caminho atrás de você se rachando. Você começa a correr desesperado. Eventualmente você chega em uma nova sala.";
         espelho_quebrado();
-    }else if(escolha == 1){
-        cout << "dev";
     }else if(escolha == 3){
-        cout << "dev";
+        cout << "Sua voz ecoa, mas não volta para você. Ela parece ser absorvida pelo vidro. De repente, o espelho racha e a escuridão do outro lado te puxa para baixo.\n";
         fim_inferno();
     }
     creditos();
@@ -818,6 +1090,7 @@ void fim_npc(){
     cout << "Vendo a expressão horrorizada daquilo que não estava ali não conseguindo sair ao tentar segui-lo.\n";
     cout << "Você continua a andar e chega em uma colina coberta de flores. Cessando sua existência e tornando-se uma delas.\n";
     cout << "Fim\n";
+    ascii_colina();
     creditos();
 }
 
@@ -843,13 +1116,13 @@ void fim_verdade(){
 }
 
 void fim_espelho(){
+    ascii_espelho();
     cout << "Seus dedos parecem se desprender de sua mão. Seu corpo já nao parece o mesmo. \n";
-    cout << "Seu corpo entrara dentro do espelho. Nada mais pode ser feito. \n";
-    cout << "A criatura tomou seu lugar. Você perdeu. \n";
-    cout << "Agora ela anda livremente. Tomando posse do que você achava ser seu.";
+    cout << "Seu corpo entrou dentro do espelho. Nada mais pode ser feito. \n";
+    cout << "A criatura tomou seu lugar. Você perdeu a casca que abrigava a sua alma. \n";
+    cout << "Agora ela anda livremente. Tomando posse do que você achava ser seu.\n";
     
     
-    //cria algo ai
     // Você entra no espelho e fica vendo a criatura sair dele e andar livremente pela sala totalmente independente tomando o seu lugar no mundo até você não existir mais
     creditos();
 }
@@ -857,6 +1130,7 @@ void fim_espelho(){
 void fim_esquecido(){
 
     if(caiuBuraco){
+        ascii_buraco();
         cout << "Distraído você cai em um buraco. Há apenas escuridão por um bom tempo. Não há corrente de ar. Não há nada além de uma força de sucção para baixo.\n";
         cout << "Você não consegue se lembrar de nada. Nem do seu nome. Nem do seu rosto. Nem do que você estava fazendo.\n";
         cout << "Você apenas cai. E cai. E cai. Você aterrisa em algo sólido. Não houve nenhum dano a você com a queda.\n";
@@ -867,6 +1141,7 @@ void fim_esquecido(){
         cout << "Você não consegue se lembrar de nada. Nem do seu nome. Nem do seu rosto. Nem do que você estava fazendo.\n";
         cout << "Você apenas cai. E cai. E cai. Você aterrisa em algo sólido. Não houve nenhum dano a você com a queda.\n";
     }
+    ascii_ilha();
 
     cout << "O local parece uma pequena ilha. No entanto o horizonte é somente uma massa completamente escura que nenhuma luz parece conseguir refletir.\n";
     cout << "Você fica ali naquela ilha de nada. Suas memórias não voltam. Para você, sempre só existiu aquela ilha de nada.\n";
@@ -876,6 +1151,7 @@ void fim_esquecido(){
 }
 
 void fim_perfeito(){
+    ascii_cama();
     cout << "Você abre os olhos. O teto de seu quarto é talvez uma das coisas mais bonitas que você já viu. \n";
     cout << "O silêncio não é mais críptico e ensurdecedor. É pacífico.\n";
     cout << "Ao seu lado há um calor suave. Segurando em sua camisa com força mesmo em seu sono.\n";
@@ -891,6 +1167,7 @@ void fim_perfeito(){
 }
 
 void fim_saida(){
+    ascii_saida();
     cout << "Você anda por bastante tempo. A cidade fica para trás de você. As coisas começam a ficar estranhas, pequenas inconsistências. \n";
     cout << "Você já não sabe por quanto tempo andou. 1 minuto? 10 horas? 100 dias? 1000 anos? \n";
     cout << "Após um certo tempo, rachaduras começam a aparecer de canto de olho. \n";
@@ -908,6 +1185,10 @@ void fim_saida(){
 }
 
 void fim_inferno(){
+    ascii_inferno();
+    cout << "Você cai em um abismo sem fim. Não há fogo, não há demônios, apenas o vazio absoluto.\n";
+    cout << "A pior parte do inferno não é a dor física, mas a percepção de que você nunca existiu.\n";
+    cout << "Você é apenas um pensamento esquecido em um universo que já seguiu em frente.\n";
     cout << "Fim.\n";
     creditos();
 }
