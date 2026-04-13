@@ -69,6 +69,7 @@ int main() {
     return 0;
 }
 
+// Por Luiz
 int verificaInput(int max){
     int escolha;
     int min = 1; // n uso valor diferente de 1 pra começar
@@ -84,6 +85,7 @@ int verificaInput(int max){
     }
 }
 
+// Por Luiz
 void printSuspense(string texto){
     for(size_t i = 0; i < texto.length(); i++){ // size_t é o tipo para tamanhos(texto.lenght()) 
         char c = texto[i];
@@ -98,6 +100,7 @@ void printSuspense(string texto){
     cout << "\n";
 }
 
+// ASCII por Luiz
 void ascii_inferno(){
     std::cout << R"(
              / \          / \       / \
@@ -440,6 +443,7 @@ void ruas(){
     
 }
 
+// Luiz
 void homem(){ // perdão pedro. me passei.
     if(interagiuHomem == 0){
         cout << "\n";
@@ -588,6 +592,7 @@ void homem(){ // perdão pedro. me passei.
     }
 }
 
+// Pedro
 void reflexo(){
 
     if(lembraNome || memoriaInstavel){
@@ -669,6 +674,7 @@ void reflexo(){
     }
 }
 
+// Luiz
 void saidaDaCidade(){
     ascii_saida();
     
@@ -742,6 +748,7 @@ void saidaDaCidade(){
     }
 }
 
+// Pedro
 void espere(){
     if(esperou == 0){
         cout << "Você espera por um tempo. Nada muda. O tempo passa. E passa. E passa. Você percebe um beco com uma iluminação precária\n"; 
@@ -788,6 +795,7 @@ void espere(){
     }
 }
 
+// Luiz
 void beco(){  
     if(seguindoHomem){
         ascii_beco();
@@ -875,7 +883,7 @@ void beco(){
     }
 }
 
-
+// Luiz e Pedro
 void espelho(){ 
     if(matouReflexo == true && sanidade <= 5){ // revela o corredor com espelho rachado e o corredor sem reflexo
         cout << "Você está em uma sala opaca com 5 caminhos em cada ponta de um pentagrama. Alguns deles possuem portas de pedra o fechando.\n";
@@ -932,6 +940,7 @@ void espelho(){
 
 }
 
+// Luiz
 void corredor_reflexos(){
    
    
@@ -984,6 +993,7 @@ void corredor_reflexos(){
     }
 }
 
+// Pedro
 void sala_versoes(){
     cout << "Você adentra a sala com a placa de 3 macacos.\n";
     cout << "Há um reflexo com as mãos nos olhos.\n";
@@ -1013,6 +1023,7 @@ void sala_versoes(){
     }
 }
 
+// Luiz
 void saida_falsa(){
     cout << "Você anda através da porta da saída tranquilamente. O caminho se revela curto e sem dificuldades.\n";
     cout << "Você saí por uma porta de saída de emergência vermelha.\n";
@@ -1027,6 +1038,7 @@ void saida_falsa(){
     }
 }
 
+// Pedro
 void espelho_sem_reflexo(){
 
     cout << "Você se vê diante de um espelho. Mas nenhum reflexo pode ser visto nele.\n";
@@ -1051,6 +1063,7 @@ void espelho_sem_reflexo(){
     creditos();
 }
 
+// Pedro
 void espelho_quebrado(){
     cout << "Você adentra uma sala onde todos espelhos estão quebrados. Cacos estilhaçados no chão. Somente resta um espelho inteiro no centro da sala.\n";
     cout << "\n";
@@ -1079,6 +1092,7 @@ void espelho_quebrado(){
     // 3. Voltar.
 }
 
+// Luiz
 void fim_npc(){
     cout << "Você segue o homem até que ele anda para fora dos limites da cidade. Você tenta continuar a seguí-lo, mas você se pega no caminho contrário.\n";
     cout << "Apenas podendo ver as costas do homem andando livre pelos campos verdejantes dos arredores daquela cidade.\n";
@@ -1094,6 +1108,7 @@ void fim_npc(){
     creditos();
 }
 
+// Pedro
 void fim_verdade(){
     string error = "ERROR: Reality.exe not found.";
     printSuspense(error);
@@ -1115,6 +1130,7 @@ void fim_verdade(){
     creditos();
 }
 
+// Pedro
 void fim_espelho(){
     ascii_espelho();
     cout << "Seus dedos parecem se desprender de sua mão. Seu corpo já nao parece o mesmo. \n";
@@ -1127,6 +1143,7 @@ void fim_espelho(){
     creditos();
 }
 
+// Luiz
 void fim_esquecido(){
 
     if(caiuBuraco){
@@ -1150,6 +1167,7 @@ void fim_esquecido(){
     creditos();
 }
 
+// Luiz
 void fim_perfeito(){
     ascii_cama();
     cout << "Você abre os olhos. O teto de seu quarto é talvez uma das coisas mais bonitas que você já viu. \n";
@@ -1166,6 +1184,7 @@ void fim_perfeito(){
     creditos();
 }
 
+// Luiz
 void fim_saida(){
     ascii_saida();
     cout << "Você anda por bastante tempo. A cidade fica para trás de você. As coisas começam a ficar estranhas, pequenas inconsistências. \n";
@@ -1184,6 +1203,7 @@ void fim_saida(){
     creditos();
 }
 
+// Pedro
 void fim_inferno(){
     ascii_inferno();
     cout << "Você cai em um abismo sem fim. Não há fogo, não há demônios, apenas o vazio absoluto.\n";

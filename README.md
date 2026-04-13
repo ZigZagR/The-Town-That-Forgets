@@ -1,8 +1,8 @@
 ﻿# The Town That Forgets
 ## Uma aventura narrativa de texto em um universo lovecraftiano
 
-### Compilação:
-## Requisitos: g++ e windows.
+## Requisitos: 
+### g++ e windows.
 
 ## Para verificar instalação do g++:
 ```bash 
