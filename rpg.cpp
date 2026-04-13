@@ -758,11 +758,24 @@ void saida_falsa(){
 }
 
 void espelho_sem_reflexo(){
+
+    cout << "Você se vê diante de um espelho. Mas nenhum reflexo pode ser visto nele.\n";
+    cout << "\n";
+    cout << "1. Esperar. \n";
+    cout << "2. Seguir em frente. \n";
+    cout << "3. Gritar.";
     // - Espaço Sem Reflexo -> SUGEStão PODE FAZER O QUE QUISER AQUI em geral seguir em frente vai pro fim verdade
-    // 1. Esperar.
-    // 2. Seguir em frente.
-    // 3. Gritar.
-    cout << "Em dev\n"; // PEPEPPEPEPEPPEPEPE
+    int escolha;
+    escolha = verificaInput(3);
+    if(escolha == 2){
+        cout << "Seus passos parecem estranhos. Não pare.";
+        espelho_quebrado();
+    }else if(escolha == 1){
+        cout << "dev";
+    }else if(escolha == 3){
+        cout << "dev";
+        fim_inferno();
+    }
     creditos();
 }
 
@@ -809,7 +822,20 @@ void fim_npc(){
 }
 
 void fim_verdade(){
-    cout << "Em dev."; 
+    string error = "ERROR: Reality.exe not found.";
+    printSuspense(error);
+    
+    cout << "Você acorda em um espaço branco. Vazio. Silencioso. \n";
+    cout << "Você é apenas um pensamento sem corpo. Flutuando no vácuo. \n";
+    cout << "Você não está mais respirando. Pois nunca houve ar. \n";
+    cout << "Você não está mais vendo. Pois nunca houve luz. \n";
+
+    string despertar = "Azatoth despertou.";
+    printSuspense(despertar);
+
+    //cout << "Azatoth despertou.";
+
+
     // Final de descobrir a verdade do mundo o mundo na verdade ser um pesadelo de azazoth paralelo ao mundo real. Este pesadelo é mantido por entidades cósmicas que prendem a 
     // consciência de azazoth em um pentagrama de tamanho galático. Pode fazer sla alguma forma de vc acordar a criatura e o mundo acaba 
     // pq Azazoth é uma entidade que literalmente sonha com a nossa realidade no universo de lovecraft
@@ -817,7 +843,13 @@ void fim_verdade(){
 }
 
 void fim_espelho(){
-    cout << "Em dev."; //cria algo ai
+    cout << "Seus dedos parecem se desprender de sua mão. Seu corpo já nao parece o mesmo. \n";
+    cout << "Seu corpo entrara dentro do espelho. Nada mais pode ser feito. \n";
+    cout << "A criatura tomou seu lugar. Você perdeu. \n";
+    cout << "Agora ela anda livremente. Tomando posse do que você achava ser seu.";
+    
+    
+    //cria algo ai
     // Você entra no espelho e fica vendo a criatura sair dele e andar livremente pela sala totalmente independente tomando o seu lugar no mundo até você não existir mais
     creditos();
 }
